@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('event-app')
-  .controller('EventController', ['$scope', '$modal', 'resolvedEvent', 'Event',
-    function ($scope, $modal, resolvedEvent, Event) {
+  .controller('EventController', ['$scope', '$uibModal', 'resolvedEvent', 'Event',
+    function ($scope, $uibModal, resolvedEvent, Event) {
 
       $scope.events = resolvedEvent;
 
@@ -41,17 +41,17 @@ angular.module('event-app')
 
       $scope.clear = function () {
         $scope.event = {
-          
+
           "title": "",
-          
+
           "description": "",
-          
+
           "id": ""
         };
       };
 
       $scope.open = function (id) {
-        var eventSave = $modal.open({
+        var eventSave = $uibModal.open({
           templateUrl: 'event-save.html',
           controller: 'EventSaveController',
           resolve: {
@@ -67,17 +67,17 @@ angular.module('event-app')
         });
       };
     }])
-  .controller('EventSaveController', ['$scope', '$modalInstance', 'event',
-    function ($scope, $modalInstance, event) {
+  .controller('EventSaveController', ['$scope', '$uibModalInstance', 'event',
+    function ($scope, $uibModalInstance, event) {
       $scope.event = event;
 
-      
+
 
       $scope.ok = function () {
-        $modalInstance.close($scope.event);
+        $uibModalInstance.close($scope.event);
       };
 
       $scope.cancel = function () {
-        $modalInstance.dismiss('cancel');
+        $uibModalInstance.dismiss('cancel');
       };
     }]);

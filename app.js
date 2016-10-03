@@ -1,15 +1,15 @@
-var express        = require('express')
-  , bodyParser     = require('body-parser')
-  , errorHandler   = require('errorhandler')
-  , methodOverride = require('method-override')
-  , morgan         = require('morgan')
-  , http           = require('http')
-  , path           = require('path')
-  , db             = require('./models')
+var express        = require('express');
+var bodyParser     = require('body-parser');
+var errorHandler   = require('errorhandler');
+var methodOverride = require('method-override');
+var morgan         = require('morgan');
+var http           = require('http');
+var path           = require('path');
+var db             = require('./models');
 
-  , events = require('./routes/events')
+var events = require('./routes/events');
 
-var app = express()
+var app = express();
 
 // all environments
 app.set('port', process.env.PORT || 3000)
