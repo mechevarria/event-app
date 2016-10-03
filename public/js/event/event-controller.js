@@ -52,7 +52,7 @@ angular.module('event-app')
 
       $scope.open = function (id) {
         var eventSave = $uibModal.open({
-          templateUrl: 'event-save.html',
+          templateUrl: 'views/event/event-save.html',
           controller: 'EventSaveController',
           resolve: {
             event: function () {

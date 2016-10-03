@@ -1,93 +1,36 @@
-<div>
+<h2>Events</h2>
 
-    <h2>Events</h2>
-
-    <script type = "text/ng-template" id="event-save.html">
-        <form name="form" role="form" novalidate
-              class="ng-scope ng-invalid ng-invalid-required ng-dirty"
-              ng-submit="ok()">
-
-            <div class="modal-header">
-                <button type="button" class="close"
-                        ng-click="cancel()">&times;</button>
-                <h4 class="modal-title" id="myEventLabel">Create or edit a Event</h4>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label>ID</label>
-                    <input type="text" class="form-control" name="id"
-                           ng-model="event.id" readonly>
-                </div>
-
-
-                <div class="form-group">
-                    <label>title:</label>
-
-                    <input type="text" class="form-control" name="title"
-                           ng-model="event.title" ng-required="false"
-                           />
-                    <span class="error" ng-show="form.title.$error.minlength">Must be at least  characters.</span>
-                    <span class="error" ng-show="form.title.$error.maxlength">Must be at most  characters.</span>
-                </div>
-
-                <div class="form-group">
-                    <label>description:</label>
-
-                    <input type="text" class="form-control" name="description"
-                           ng-model="event.description" ng-required="false"
-                           />
-                    <span class="error" ng-show="form.description.$error.minlength">Must be at least  characters.</span>
-                    <span class="error" ng-show="form.description.$error.maxlength">Must be at most  characters.</span>
-                </div>
-
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" ng-click="cancel()">Cancel
-                </button>
-                <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Save</button>
-            </div>
-        </form>
-    </script>
-
-    <button class="btn btn-primary btn" ng-click="create()">
-        <span class="glyphicon glyphicon-flash"></span> Create a new Event
+<button class="btn btn-primary btn" ng-click="create()">
+        <span class="fa fa-plus"></span>&nbsp;&nbsp;New Event
     </button>
-
-    <div class="table-responsive">
-        <table class="table table-striped">
-            <thead>
+<br>
+<br>
+<div class="table-responsive">
+    <table class="table table-striped ev-vcenter">
+        <thead>
             <tr>
+                <th>Action</th>
                 <th>ID</th>
-
                 <th>title</th>
-
                 <th>description</th>
-
             </tr>
-            </thead>
-            <tbody>
+        </thead>
+        <tbody>
             <tr ng-repeat="event in events">
+                <td>
+                    <button type="submit" ng-click="update(event.id)" class="btn btn-default" title="edit">
+                        <span class="fa fa-pencil"></span>&nbsp;
+                    </button>
+                    <button type="submit" ng-click="delete(event.id)" class="btn btn-danger" title="delete">
+                        <span class="fa fa-times"></span>&nbsp;
+                    </button>
+                </td>
                 <td>{{event.id}}</td>
 
                 <td>{{event.title }}</td>
 
                 <td>{{event.description }}</td>
-
-                <td>
-                    <button type="submit"
-                            ng-click="update(event.id)"
-                            class="btn btn-default">
-                        <span class="glyphicon glyphicon-pencil"></span> Edit
-                    </button>
-                    <button type="submit"
-                            ng-click="delete(event.id)"
-                            class="btn btn-danger">
-                        <span class="glyphicon glyphicon-remove-circle"></span> Delete
-                    </button>
-                </td>
             </tr>
-            </tbody>
-        </table>
-    </div>
+        </tbody>
+    </table>
 </div>

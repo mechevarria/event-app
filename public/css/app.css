@@ -1,5 +1,17 @@
 body {
-  margin-top: 60px;
+  margin-top: 50px;
   padding: 10px;
   background-color: #ECF0F1;
+}
+
+.ev-logo {
+  margin-top: -12px;
+}
+
+.ev-vcenter td {
+   vertical-align: middle!important;
+}
+
+.ev-container {
+  background-color: #FFFFFF;
 }
