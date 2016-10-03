@@ -1,5 +1,27 @@
 {
 	"baseName": "event-app",
-	"entities": [],
+	"entities": [
+		{
+			"name": "event",
+			"attrs": [
+				{
+					"attrName": "title",
+					"attrType": "String",
+					"minLength": "",
+					"maxLength": "",
+					"enumValues": [],
+					"required": false
+				},
+				{
+					"attrName": "description",
+					"attrType": "String",
+					"minLength": "",
+					"maxLength": "",
+					"enumValues": [],
+					"required": false
+				}
+			]
+		}
+	],
 	"resources": []
 }

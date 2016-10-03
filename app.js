@@ -7,6 +7,7 @@ var express        = require('express')
   , path           = require('path')
   , db             = require('./models')
 
+  , events = require('./routes/events')
 
 var app = express()
 
@@ -24,6 +25,12 @@ if ('development' === app.get('env')) {
   app.use(errorHandler())
 }
 
+
+app.get('/event-app/events', events.findAll)
+app.get('/event-app/events/:id', events.find)
+app.post('/event-app/events', events.create)
+app.put('/event-app/events/:id', events.update)
+app.del('/event-app/events/:id', events.destroy)
 
 
 db
