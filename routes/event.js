@@ -3,13 +3,13 @@
 var db = require('../models');
 
 exports.findAll = function(req, res) {
-  db.Event.findAll().success(function(entities) {
+  db.Event.findAll().then(function(entities) {
     res.json(entities)
   });
 }
 
 exports.find = function(req, res) {
-  db.Event.find({ where: { id: req.param('id') } }).success(function(entity) {
+  db.Event.find({ where: { id: req.param('id') } }).then(function(entity) {
     if (entity) {
       res.json(entity)
     } else {
@@ -19,16 +19,16 @@ exports.find = function(req, res) {
 }
 
 exports.create = function(req, res) {
-  db.Event.create(req.body).success(function(entity) {
+  db.Event.create(req.body).then(function(entity) {
     res.statusCode = 201
     res.json(entity)
   });
 }
 
 exports.update = function(req, res) {
-  db.Event.find({ where: { id: req.param('id') } }).success(function(entity) {
+  db.Event.find({ where: { id: req.param('id') } }).then(function(entity) {
     if (entity) {
-      entity.updateAttributes(req.body).success(function(entity) {
+      entity.updateAttributes(req.body).then(function(entity) {
         res.json(entity)
       })
     } else {
@@ -38,9 +38,9 @@ exports.update = function(req, res) {
 }
 
 exports.destroy = function(req, res) {
-  db.Event.find({ where: { id: req.param('id') } }).success(function(entity) {
+  db.Event.find({ where: { id: req.param('id') } }).then(function(entity) {
     if (entity) {
-      entity.destroy().success(function() {
+      entity.destroy().then(function() {
         res.send(204)
       })
     } else {
