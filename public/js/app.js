@@ -1,4 +1,5 @@
-// Declare app level module which depends on filters, and services
+'use strict';
+
 angular.module('event-app', ['ngResource', 'ngRoute', 'ui.bootstrap'])
   .config(['$routeProvider', function ($routeProvider) {
     $routeProvider

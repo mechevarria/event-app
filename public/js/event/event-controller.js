@@ -42,11 +42,11 @@ angular.module('event-app')
       $scope.clear = function () {
         $scope.event = {
 
-          "title": "",
+          'title': '',
 
-          "description": "",
+          'description': '',
 
-          "id": ""
+          'id': ''
         };
       };
 

@@ -11,5 +11,5 @@ angular.module('event-app')
             return Event.query();
           }]
         }
-      })
+      });
     }]);

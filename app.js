@@ -25,7 +25,6 @@ if ('development' === app.get('env')) {
   app.use(errorHandler());
 }
 
-var bad_variable = "BaD"
 
 app.get('/event-app/events', events.findAll);
 app.get('/event-app/events/:id', events.find);
@@ -42,6 +41,6 @@ db
     } else {
       http.createServer(app).listen(app.get('port'), function() {
         console.log('Express server listening on port ' + app.get('port'));
-      })
+      });
     }
   });
