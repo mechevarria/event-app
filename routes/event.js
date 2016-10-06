@@ -1,9 +1,11 @@
-var db = require('../models')
+'use strict';
+
+var db = require('../models');
 
 exports.findAll = function(req, res) {
   db.Event.findAll().success(function(entities) {
     res.json(entities)
-  })
+  });
 }
 
 exports.find = function(req, res) {
@@ -13,14 +15,14 @@ exports.find = function(req, res) {
     } else {
       res.send(404)
     }
-  })
+  });
 }
 
 exports.create = function(req, res) {
   db.Event.create(req.body).success(function(entity) {
     res.statusCode = 201
     res.json(entity)
-  })
+  });
 }
 
 exports.update = function(req, res) {
@@ -32,7 +34,7 @@ exports.update = function(req, res) {
     } else {
       res.send(404)
     }
-  })
+  });
 }
 
 exports.destroy = function(req, res) {
@@ -44,5 +46,5 @@ exports.destroy = function(req, res) {
     } else {
       res.send(404)
     }
-  })
+  });
 }

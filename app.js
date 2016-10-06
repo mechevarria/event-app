@@ -1,3 +1,5 @@
+'use strict';
+
 var express        = require('express');
 var bodyParser     = require('body-parser');
 var errorHandler   = require('errorhandler');
@@ -7,39 +9,39 @@ var http           = require('http');
 var path           = require('path');
 var db             = require('./models');
 
-var events = require('./routes/events');
+var events = require('./routes/event');
 
 var app = express();
 
 // all environments
-app.set('port', process.env.PORT || 3000)
-app.use(morgan('dev'))
-app.use(bodyParser())
-app.use(methodOverride())
-app.use(express.static(path.join(__dirname, 'public')))
+app.set('port', process.env.PORT || 3000);
+app.use(morgan('dev'));
+app.use(bodyParser());
+app.use(methodOverride());
+app.use(express.static(path.join(__dirname, 'public')));
 
 // development only
 if ('development' === app.get('env')) {
-  app.use(errorHandler())
+  app.use(errorHandler());
 }
 
+var bad_variable = "BaD"
 
-app.get('/event-app/events', events.findAll)
-app.get('/event-app/events/:id', events.find)
-app.post('/event-app/events', events.create)
-app.put('/event-app/events/:id', events.update)
-app.del('/event-app/events/:id', events.destroy)
-
+app.get('/event-app/events', events.findAll);
+app.get('/event-app/events/:id', events.find);
+app.post('/event-app/events', events.create);
+app.put('/event-app/events/:id', events.update);
+app.del('/event-app/events/:id', events.destroy);
 
 db
   .sequelize
   .sync()
   .complete(function(err) {
     if (err) {
-      throw err
+      throw err;
     } else {
       http.createServer(app).listen(app.get('port'), function() {
-        console.log('Express server listening on port ' + app.get('port'))
+        console.log('Express server listening on port ' + app.get('port'));
       })
     }
-  })
+  });
