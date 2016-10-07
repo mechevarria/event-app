@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Application to monitor simple events",
   "scripts": {
-    "start": "node server.js"
+    "start": "node ./server/server.js"
   },
   "dependencies": {
     "body-parser": "^1.15.1",
@@ -32,6 +32,7 @@
     "grunt-contrib-jshint": "^1.0.0",
     "grunt-contrib-uglify": "~0.2.7",
     "grunt-contrib-watch": "^0.6.1",
+    "grunt-express-server": "^0.5.3",
     "grunt-karma": "~0.6.2",
     "grunt-modernizr": "~0.4.1",
     "grunt-ngmin": "~0.0.3",
@@ -44,7 +45,7 @@
     "karma-jasmine": "~0.1.0",
     "karma-junit-reporter": "~0.1.0",
     "karma-ng-scenario": "~0.1.0",
-    "load-grunt-tasks": "^0.4.0",
+    "load-grunt-tasks": "^3.5.2",
     "time-grunt": "0.2.3"
   },
   "engines": {
