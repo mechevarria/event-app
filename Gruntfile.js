@@ -9,8 +9,8 @@ module.exports = function(grunt) {
     grunt.initConfig({
         yeoman: {
             // configurable paths
-            app: require('./bower.json').appPath || 'public',
-            dist: 'public'
+            app: require('./bower.json').appPath || 'client',
+            dist: 'client'
         },
         sync: {
             dist: {
@@ -58,7 +58,7 @@ module.exports = function(grunt) {
                     middleware: function(connect) {
                         return [
                             proxySnippet,
-                            connect.static(require('path').resolve('public'))
+                            connect.static(require('path').resolve('client'))
                         ];
                     }
                 }

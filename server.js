@@ -16,9 +16,12 @@ var app = express();
 // all environments
 app.set('port', process.env.PORT || 3000);
 app.use(morgan('dev'));
-app.use(bodyParser());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+app.use(bodyParser.json());
 app.use(methodOverride());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'client')));
 
 // development only
 if ('development' === app.get('env')) {
@@ -30,7 +33,7 @@ app.get('/event-app/events', events.findAll);
 app.get('/event-app/events/:id', events.find);
 app.post('/event-app/events', events.create);
 app.put('/event-app/events/:id', events.update);
-app.del('/event-app/events/:id', events.destroy);
+app.delete('/event-app/events/:id', events.destroy);
 
 db
   .sequelize
