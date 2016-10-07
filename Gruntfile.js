@@ -22,17 +22,29 @@ module.exports = function(grunt) {
             }
         },
         watch: {
-            options: {
-                livereload: 35729
-            },
-            src: {
+            client: {
+                options: {
+                    livereload: true
+                },
                 files: [
-                    '<%= yeoman.app %>/*.html',
+                    '<%= yeoman.app %>/views/*.html',
                     '<%= yeoman.app %>/css/**/*',
-                    '<%= yeoman.app %>/js/**/*',
-                    '<%= jshint.files %>'
+                    '<%= jshint.client %>'
                 ],
-                tasks: ['jshint']
+                tasks: ['jshint:client']
+            },
+            server: {
+                options: {
+                    spawn: false,
+                    livereload: false
+                },
+                files: [
+                    '<%= jshint.server %>'
+                ],
+                tasks: [
+                    'jshint:server',
+                    'express:dev'
+                ]
             }
         },
         connect: {
@@ -102,23 +114,39 @@ module.exports = function(grunt) {
             }
         },
         jshint: {
-            files: [
-              'Gruntfile.js',
-              'app.js',
-              '<%= yeoman.app %>/js/**/*.js'
+            client: [
+                'Gruntfile.js',
+                '<%= yeoman.app %>/js/**/*.js'
+            ],
+            server: [
+                'GruntFile.js',
+                'server/**/*.js'
             ],
             options: {
                 jshintrc: '.jshintrc',
                 reporter: require('jshint-stylish')
             }
+        },
+        express: {
+            dev: {
+                options: {
+                    script: './server/server.js'
+                }
+            }
         }
     });
 
-    grunt.registerTask('serve', [
-        'jshint',
+    grunt.registerTask('client', [
+        'jshint:client',
         'configureProxies',
         'connect:livereload',
-        'watch'
+        'watch:client'
+    ]);
+
+    grunt.registerTask('server', [
+        'jshint:server',
+        'express:dev',
+        'watch:server'
     ]);
 
 };
