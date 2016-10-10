@@ -12,6 +12,7 @@ var db             = require('./models');
 var events = require('./routes/event-routes');
 
 var app = express();
+  
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -39,6 +40,6 @@ db
   .sync()
   .then(function() {
     http.createServer(app).listen(app.get('port'), function() {
-      console.log('Express server listening on port ' + app.get('port'));
+      console.log('Express server listening on port ' + app.get('port'));  //eslint-disable-line no-console
     });
   });

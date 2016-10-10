@@ -29,9 +29,9 @@ module.exports = function(grunt) {
                 files: [
                     '<%= yeoman.app %>/views/*.html',
                     '<%= yeoman.app %>/css/**/*',
-                    '<%= jshint.client %>'
+                    '<%= eslint.target %>'
                 ],
-                tasks: ['jshint:client']
+                tasks: ['eslint']
             },
             server: {
                 options: {
@@ -39,10 +39,10 @@ module.exports = function(grunt) {
                     livereload: false
                 },
                 files: [
-                    '<%= jshint.server %>'
+                    '<%= eslint.target %>'
                 ],
                 tasks: [
-                    'jshint:server',
+                    'eslint',
                     'express:dev'
                 ]
             }
@@ -113,19 +113,15 @@ module.exports = function(grunt) {
                 }
             }
         },
-        jshint: {
-            client: [
-                'Gruntfile.js',
-                '<%= yeoman.app %>/js/**/*.js'
-            ],
-            server: [
-                'GruntFile.js',
-                'server/**/*.js'
-            ],
+        eslint: {
             options: {
-                jshintrc: '.jshintrc',
-                reporter: require('jshint-stylish')
-            }
+                configFile: '.eslintrc'
+            },
+            target: [
+                'Gruntfile.js',
+                '<%= yeoman.app %>/js/**/*.js',
+                'server/**/*.js'
+            ]
         },
         express: {
             dev: {
@@ -137,14 +133,14 @@ module.exports = function(grunt) {
     });
 
     grunt.registerTask('client', [
-        'jshint:client',
+        'eslint',
         'configureProxies',
         'connect:livereload',
         'watch:client'
     ]);
 
     grunt.registerTask('server', [
-        'jshint:server',
+        'eslint',
         'express:dev',
         'watch:server'
     ]);
