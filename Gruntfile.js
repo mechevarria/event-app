@@ -1,34 +1,21 @@
 'use strict';
 
 var proxySnippet = require('grunt-connect-proxy/lib/utils').proxyRequest;
+var serveStatic = require('serve-static');
 
 module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt);
     require('time-grunt')(grunt);
 
     grunt.initConfig({
-        yeoman: {
-            // configurable paths
-            app: require('./bower.json').appPath || 'client',
-            dist: 'client'
-        },
-        sync: {
-            dist: {
-                files: [{
-                    cwd: '<%= yeoman.app %>',
-                    dest: '<%= yeoman.dist %>',
-                    src: '**'
-                }]
-            }
-        },
         watch: {
             client: {
                 options: {
                     livereload: true
                 },
                 files: [
-                    '<%= yeoman.app %>/views/*.html',
-                    '<%= yeoman.app %>/css/**/*',
+                    'client/views/*.html',
+                    'client/css/**/*',
                     '<%= eslint.target %>'
                 ],
                 tasks: ['eslint']
@@ -65,12 +52,12 @@ module.exports = function(grunt) {
                 options: {
                     open: true,
                     base: [
-                        '<%= yeoman.app %>'
+                        'client'
                     ],
-                    middleware: function(connect) {
+                    middleware: function() {
                         return [
                             proxySnippet,
-                            connect.static(require('path').resolve('client'))
+                            serveStatic('client')
                         ];
                     }
                 }
@@ -83,43 +70,13 @@ module.exports = function(grunt) {
             }
             */
         },
-        // Put files not handled in other tasks here
-        copy: {
-            dist: {
-                files: [{
-                    expand: true,
-                    dot: true,
-                    cwd: '<%= yeoman.app %>',
-                    dest: '<%= yeoman.dist %>',
-                    src: '**'
-                }]
-            },
-        },
-        // Test settings
-        karma: {
-            unit: {
-                configFile: 'test/config/karma.conf.js',
-                singleRun: true
-            }
-        },
-        bowercopy: {
-            options: {
-                destPrefix: '<%= yeoman.app %>'
-            },
-            test: {
-                files: {
-                    'test/lib/angular-mocks': 'angular-mocks',
-                    'test/lib/angular-scenario': 'angular-scenario'
-                }
-            }
-        },
         eslint: {
             options: {
                 configFile: '.eslintrc'
             },
             target: [
                 'Gruntfile.js',
-                '<%= yeoman.app %>/js/**/*.js',
+                'client/js/**/*.js',
                 'server/**/*.js'
             ]
         },
