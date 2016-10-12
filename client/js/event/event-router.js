@@ -1,15 +1,19 @@
 'use strict';
 
-angular.module('event-app')
-  .config(['$routeProvider', function ($routeProvider) {
+function EventRouter($routeProvider) {
     $routeProvider
-      .when('/events', {
-        templateUrl: 'views/event/events.html',
-        controller: 'EventController',
-        resolve:{
-          resolvedEvent: ['Event', function (Event) {
-            return Event.query();
-          }]
-        }
-      });
-    }]);
+        .when('/events', {
+            templateUrl: 'views/event/events.html',
+            controller: 'EventCtrl',
+            resolve: {
+                resolvedEvent: ['EventSrvc', function(EventSrvc) {
+                    return EventSrvc.query();
+                }]
+            }
+        });
+}
+
+EventRouter.$inject = ['$routeProvider'];
+
+angular.module('event-app')
+    .config(EventRouter);
