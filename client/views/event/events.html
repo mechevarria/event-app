@@ -1,27 +1,27 @@
 <h2>Events</h2>
 
-<button class="btn btn-primary btn" ng-click="create()">
+<button type="button" class="btn btn-primary" ng-click="create()">
         <span class="fa fa-plus"></span>&nbsp;&nbsp;New Event
-    </button>
+</button>
 <br>
 <br>
 <div class="table-responsive">
-    <table class="table table-striped ev-vcenter">
+    <table st-table="displayedEvents" st-safe-src="events" class="table table-striped ev-vcenter">
         <thead>
             <tr>
                 <th>Action</th>
-                <th>ID</th>
-                <th>Title</th>
+                <th st-sort="id" st-sort-default="true">ID</th>
+                <th st-sort="title">Title</th>
                 <th>Description</th>
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="event in events">
+            <tr ng-repeat="event in displayedEvents">
                 <td>
-                    <button type="submit" ng-click="update(event.id)" class="btn btn-xs btn-default" title="edit">
+                    <button type="button" ng-click="update(event)" class="btn btn-xs btn-default" title="edit">
                         <span class="fa fa-pencil"></span>&nbsp;
                     </button>
-                    <button type="submit" ng-click="delete(event.id)" class="btn btn-xs btn-default" title="delete">
+                    <button type="button" ng-click="confirm(event)" class="btn btn-xs btn-default" title="delete">
                         <span class="fa fa-times"></span>&nbsp;
                     </button>
                 </td>
@@ -32,5 +32,12 @@
                 <td>{{event.description }}</td>
             </tr>
         </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4" class="text-center">
+                    <div st-pagination="" st-items-by-page="10"></div>
+                </td>
+            </tr>
+        </tfoot>
     </table>
 </div>

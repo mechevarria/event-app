@@ -1,7 +1,6 @@
 'use strict';
 
-function EventCtrl($scope, $uibModal, resolvedEvent, EventSrvc) {
-    $scope.events = resolvedEvent;
+function EventCtrl($scope, $uibModal, EventSrvc) {
 
     $scope.create = function() {
         $scope.clear();
@@ -20,58 +19,78 @@ function EventCtrl($scope, $uibModal, resolvedEvent, EventSrvc) {
                 id: id
             },
             function() {
-                $scope.events = EventSrvc.query();
+                init();
             });
     };
 
-    $scope.save = function(id) {
-        if (id) {
+    $scope.save = function(event) {
+        if (event.id) {
             EventSrvc.update({
-                    id: id
+                    id: event.id
                 }, $scope.event,
                 function() {
-                    $scope.events = EventSrvc.query();
-                    $scope.clear();
+                    init();
                 });
         } else {
-            EventSrvc.save($scope.event,
+            EventSrvc.save(event,
                 function() {
-                    $scope.events = EventSrvc.query();
-                    $scope.clear();
+                    init();
                 });
         }
     };
 
     $scope.clear = function() {
+        $scope.events = [];
+        $scope.displayedEvents = [];
         $scope.event = {
-
             'title': '',
-
             'description': '',
-
             'id': ''
         };
     };
 
-    $scope.open = function(id) {
+    $scope.confirm = function(event) {
+      var eventDelete = $uibModal.open({
+          templateUrl: 'views/event/event-delete.html',
+          controller: 'EventDeleteCtrl',
+          resolve: {
+              event: function() {
+                  return event;
+              }
+          }
+      });
+
+      eventDelete.result.then(function(entity) {
+          $scope.delete(entity.id);
+      });
+    };
+
+    $scope.open = function(event) {
         var eventSave = $uibModal.open({
             templateUrl: 'views/event/event-save.html',
             controller: 'EventSaveCtrl',
             resolve: {
                 event: function() {
-                    return $scope.event;
+                    return event;
                 }
             }
         });
 
         eventSave.result.then(function(entity) {
-            $scope.event = entity;
-            $scope.save(id);
+            $scope.save(entity);
         });
     };
+
+    function init() {
+      $scope.clear();
+      $scope.events = EventSrvc.query();
+      $scope.displayedEvents = $scope.events;
+    }
+
+    init();
 }
 
-EventCtrl.$inject = ['$scope', '$uibModal', 'resolvedEvent', 'EventSrvc'];
+EventCtrl.$inject = ['$scope', '$uibModal', 'EventSrvc'];
 
 angular.module('event-app')
     .controller('EventCtrl', EventCtrl);
