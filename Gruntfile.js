@@ -14,8 +14,8 @@ module.exports = function(grunt) {
                     livereload: true
                 },
                 files: [
-                    'client/views/*.html',
-                    'client/css/**/*',
+                    'client/components/**/*.html',
+                    'client/assets/css/*.css',
                     '<%= eslint.target %>'
                 ],
                 tasks: ['eslint']
@@ -76,7 +76,7 @@ module.exports = function(grunt) {
             },
             target: [
                 'Gruntfile.js',
-                'client/js/**/*.js',
+                'client/app/**/*.js',
                 'server/**/*.js'
             ]
         },
