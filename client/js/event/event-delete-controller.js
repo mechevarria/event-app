@@ -1,18 +1,20 @@
-'use strict';
+(function() {
+    'use strict';
 
-function EventDeleteCtrl($scope, $uibModalInstance, event) {
-  $scope.event = event;
+    angular.module('event-app')
+        .controller('EventDeleteCtrl', Controller);
 
-  $scope.ok = function() {
-      $uibModalInstance.close($scope.event);
-  };
+    Controller.$inject = ['$scope', '$uibModalInstance', 'event'];
 
-  $scope.cancel = function() {
-      $uibModalInstance.dismiss('cancel');
-  };
-}
+    function Controller($scope, $uibModalInstance, event) {
+        $scope.event = event;
 
-EventDeleteCtrl.$inject = ['$scope', '$uibModalInstance', 'event'];
+        $scope.ok = function() {
+            $uibModalInstance.close($scope.event);
+        };
 
-angular.module('event-app')
-    .controller('EventDeleteCtrl', EventDeleteCtrl);
+        $scope.cancel = function() {
+            $uibModalInstance.dismiss('cancel');
+        };
+    }
+})();

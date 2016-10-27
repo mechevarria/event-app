@@ -1,17 +1,19 @@
-'use strict';
+(function() {
+    'use strict';
 
-function HomeRouter($routeProvider) {
-  $routeProvider
-      .when('/', {
-          templateUrl: 'views/home/home.html',
-          controller: 'HomeCtrl'
-      })
-      .otherwise({
-          redirectTo: '/'
-      });
-}
+    angular.module('event-app')
+        .config(Router);
 
-HomeRouter.$inject = ['$routeProvider'];
+    Router.$inject = ['$routeProvider'];
 
-angular.module('event-app')
-    .config(HomeRouter);
+    function Router($routeProvider) {
+        $routeProvider
+            .when('/', {
+                templateUrl: 'views/home/home.html',
+                controller: 'HomeCtrl'
+            })
+            .otherwise({
+                redirectTo: '/'
+            });
+    }
+})();

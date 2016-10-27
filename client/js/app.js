@@ -1,8 +1,10 @@
-'use strict';
+(function() {
+    'use strict';
 
-angular.module('event-app', [
-    'ngResource',
-    'ngRoute',
-    'ui.bootstrap',
-    'smart-table'
-]);
+    angular.module('event-app', [
+        'ngResource',
+        'ngRoute',
+        'ui.bootstrap',
+        'smart-table'
+    ]);
+})();

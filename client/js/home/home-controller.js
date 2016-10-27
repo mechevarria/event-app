@@ -1,10 +1,12 @@
-'use strict';
+(function() {
+    'use strict';
 
-function HomeCtrl($scope) {
-    $scope.welcome = '';
-}
+    angular.module('event-app')
+        .controller('HomeCtrl', Controller);
 
-HomeCtrl.$inject = ['$scope'];
+    Controller.$inject = ['$scope'];
 
-angular.module('event-app')
-    .controller('HomeCtrl', HomeCtrl);
+    function Controller($scope) {
+        $scope.welcome = '';
+    }
+})();
