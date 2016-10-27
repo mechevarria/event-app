@@ -5,9 +5,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Event-app</title>
-  <link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet">
-  <link href="lib/bootswatch-dist/css/bootstrap.css" rel="stylesheet">
-  <link href="css/app.css" rel="stylesheet">
+  <link href="assets/lib/font-awesome/css/font-awesome.css" rel="stylesheet">
+  <link href="assets/lib/bootswatch-dist/css/bootstrap.css" rel="stylesheet">
+  <link href="assets/css/app.css" rel="stylesheet">
 </head>
 <body>
  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -19,7 +19,7 @@
          <span class="icon-bar"></span>
          <span class="icon-bar"></span>
        </button>
-       <a class="navbar-brand" href="/#/"><img class="ev-logo" src="img/logo.png"/></a>
+       <a class="navbar-brand" href="/#/"><img class="ev-logo" src="assets/img/logo.png"/></a>
      </div>
 
      <!-- Collect the nav links, forms, and other content for toggling -->
@@ -27,7 +27,7 @@
        <ul class="nav navbar-nav">
 
          <li>
-         <a href="/#/events">Events</a>
+           <a href="/#/events">Events</a>
          </li>
 
        </ul>
@@ -40,22 +40,23 @@
   <div class="container ev-container" ng-view>
   </div>
 
-  <script src="lib/jquery/dist/jquery.js"></script>
-  <script src="lib/lodash/dist/lodash.js"></script>
-  <script src="lib/angular/angular.js"></script>
-  <script src="lib/angular-resource/angular-resource.js"></script>
-  <script src="lib/angular-route/angular-route.js"></script>
-  <script src="lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-  <script src="lib/angular-smart-table/dist/smart-table.js"></script>
+  <script src="assets/lib/jquery/dist/jquery.js"></script>
+  <script src="assets/lib/lodash/dist/lodash.js"></script>
+  <script src="assets/lib/angular/angular.js"></script>
+  <script src="assets/lib/angular-resource/angular-resource.js"></script>
+  <script src="assets/lib/angular-route/angular-route.js"></script>
+  <script src="assets/lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="assets/lib/angular-smart-table/dist/smart-table.js"></script>
 
-  <script src="js/app.js"></script>
-  <script src="js/home/home-controller.js"></script>
-  <script src="js/home/home-router.js"></script>
-  <script src="js/event/event-controller.js"></script>
-  <script src="js/event/event-save-controller.js"></script>
-  <script src="js/event/event-delete-controller.js"></script>
-  <script src="js/event/event-router.js"></script>
-  <script src="js/event/event-service.js"></script>
+  <script src="app/app.js"></script>
+  <script src="app/shared/header-controller.js"></script>
+  <script src="app/components/home/home-controller.js"></script>
+  <script src="app/components/home/home-router.js"></script>
+  <script src="app/components/event/event-controller.js"></script>
+  <script src="app/components/event/event-save-controller.js"></script>
+  <script src="app/components/event/event-delete-controller.js"></script>
+  <script src="app/components/event/event-router.js"></script>
+  <script src="app/components/event/event-service.js"></script>
 
 </body>
 </html>
