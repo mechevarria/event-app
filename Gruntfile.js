@@ -8,6 +8,19 @@ module.exports = function(grunt) {
     require('time-grunt')(grunt);
 
     grunt.initConfig({
+        clean: {
+            options: {
+                force: true
+            },
+            dist: {
+                files: [{
+                    dot: true,
+                    src: [
+                        'client/dist/**/*.*'
+                    ]
+                }]
+            }
+        },
         watch: {
             client: {
                 options: {
@@ -61,14 +74,7 @@ module.exports = function(grunt) {
                         ];
                     }
                 }
-            },
-            /*
-            dist: {
-              options: {
-                base: '<%= yeoman.dist %>'
-              }
             }
-            */
         },
         eslint: {
             options: {
@@ -94,6 +100,10 @@ module.exports = function(grunt) {
         'configureProxies',
         'connect:livereload',
         'watch:client'
+    ]);
+
+    grunt.registerTask('build', [
+      'clean:dist'
     ]);
 
     grunt.registerTask('server', [

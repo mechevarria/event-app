@@ -57,7 +57,7 @@
 
         $scope.confirm = function(event) {
             var eventDelete = $uibModal.open({
-                templateUrl: 'views/event/event-delete.html',
+                templateUrl: 'app/components/event/event-delete.html',
                 controller: 'EventDeleteCtrl',
                 resolve: {
                     event: function() {
@@ -73,7 +73,7 @@
 
         $scope.open = function(event) {
             var eventSave = $uibModal.open({
-                templateUrl: 'views/event/event-save.html',
+                templateUrl: 'app/components/event/event-save.html',
                 controller: 'EventSaveCtrl',
                 resolve: {
                     event: function() {
