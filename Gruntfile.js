@@ -49,7 +49,7 @@ module.exports = function(grunt) {
         },
         connect: {
             proxies: [{
-                context: '/event-app',
+                context: '/item-app',
                 host: 'localhost',
                 port: 3000,
                 https: false,

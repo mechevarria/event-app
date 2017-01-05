@@ -2,29 +2,37 @@
 
     <div class="modal-header">
         <button type="button" class="close" ng-click="cancel()">&times;</button>
-        <h4 class="modal-title">Create or edit a Event</h4>
+        <h4 class="modal-title">Create or edit a Item</h4>
     </div>
     <div class="modal-body">
         <div class="form-group">
             <label>ID</label>
-            <input type="text" class="form-control" name="id" ng-model="event.id" readonly>
+            <input type="text" class="form-control" name="id" ng-model="item.id" readonly>
         </div>
 
 
         <div class="form-group">
             <label>title:</label>
 
-            <input type="text" class="form-control" name="title" ng-model="event.title" ng-required="false" />
-            <span class="error" ng-show="form.title.$error.minlength">Must be at least  characters.</span>
-            <span class="error" ng-show="form.title.$error.maxlength">Must be at most  characters.</span>
+            <input type="text" class="form-control" name="title" ng-model="item.title" ng-required="false" />
         </div>
 
         <div class="form-group">
             <label>description:</label>
 
-            <input type="text" class="form-control" name="description" ng-model="event.description" ng-required="false" />
-            <span class="error" ng-show="form.description.$error.minlength">Must be at least  characters.</span>
-            <span class="error" ng-show="form.description.$error.maxlength">Must be at most  characters.</span>
+            <input type="text" class="form-control" name="description" ng-model="item.description" ng-required="false" />
+        </div>
+
+        <div class="form-group">
+            <label>latitude:</label>
+
+            <input type="text" class="form-control" name="latitude" ng-model="item.latitude" ng-required="false" />
+        </div>
+
+        <div class="form-group">
+            <label>longitude:</label>
+
+            <input type="text" class="form-control" name="longitude" ng-model="item.longitude" ng-required="false" />
         </div>
 
 

@@ -1,13 +1,13 @@
 (function() {
     'use strict';
-    
-    angular.module('event-app')
-        .factory('EventSrvc', Service);
+
+    angular.module('item-app')
+        .factory('ItemSrvc', Service);
 
     Service.$inject = ['$resource'];
 
     function Service($resource) {
-        return $resource('event-app/events/:id', {}, {
+        return $resource('item-app/items/:id', {}, {
             'update': {
                 method: 'PUT'
             }

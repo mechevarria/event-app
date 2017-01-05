@@ -9,10 +9,10 @@ var http           = require('http');
 var path           = require('path');
 var db             = require('./models');
 
-var events = require('./routes/event-routes');
+var items = require('./routes/item-routes');
 
 var app = express();
-  
+
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -29,11 +29,11 @@ if ('development' === app.get('env')) {
   app.use(errorHandler());
 }
 
-app.get('/event-app/events', events.findAll);
-app.get('/event-app/events/:id', events.find);
-app.post('/event-app/events', events.create);
-app.put('/event-app/events/:id', events.update);
-app.delete('/event-app/events/:id', events.destroy);
+app.get('/item-app/items', items.findAll);
+app.get('/item-app/items/:id', items.find);
+app.post('/item-app/items', items.create);
+app.put('/item-app/items/:id', items.update);
+app.delete('/item-app/items/:id', items.destroy);
 
 db
   .sequelize

@@ -1,7 +1,7 @@
 {
     "name": "event-app",
     "version": "0.1.0",
-    "description": "Application to monitor simple events",
+    "description": "Application to monitor simple items",
     "scripts": {
         "start": "node ./server/server.js"
     },

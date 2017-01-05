@@ -1,5 +1,5 @@
 # event-app
-Lightweight application to manage events
+Lightweight application to manage items on map
 ##
 implmented as AnguarJS Frontend + Express REST api and Sequelize managed sqlite database.  By default the sqlite database will be in `/tmp`
 

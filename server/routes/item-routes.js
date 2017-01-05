@@ -3,13 +3,13 @@
 var db = require('../models');
 
 exports.findAll = function(req, res) {
-    db.Event.findAll().then(function(entities) {
+    db.Item.findAll().then(function(entities) {
         res.json(entities);
     });
 };
 
 exports.find = function(req, res) {
-    db.Event.find({
+    db.Item.find({
         where: {
             id: req.params.id
         }
@@ -23,14 +23,14 @@ exports.find = function(req, res) {
 };
 
 exports.create = function(req, res) {
-    db.Event.create(req.body).then(function(entity) {
+    db.Item.create(req.body).then(function(entity) {
         res.statusCode = 201;
         res.json(entity);
     });
 };
 
 exports.update = function(req, res) {
-    db.Event.find({
+    db.Item.find({
         where: {
             id: req.params.id
         }
@@ -46,7 +46,7 @@ exports.update = function(req, res) {
 };
 
 exports.destroy = function(req, res) {
-    db.Event.find({
+    db.Item.find({
         where: {
             id: req.params.id
         }

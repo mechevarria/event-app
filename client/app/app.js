@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    angular.module('event-app', [
+    angular.module('item-app', [
         'ngResource',
         'ngRoute',
         'ui.bootstrap',
