@@ -5,6 +5,8 @@
         'ngResource',
         'ngRoute',
         'ui.bootstrap',
-        'smart-table'
+        'smart-table',
+        'nemLogging',
+        'ui-leaflet'
     ]);
 })();

@@ -5,8 +5,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>item-app</title>
-  <link href="assets/lib/font-awesome/css/font-awesome.css" rel="stylesheet">
-  <link href="assets/lib/bootswatch-dist/css/bootstrap.css" rel="stylesheet">
+  <link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet">
+  <link href="lib/bootswatch-dist/css/bootstrap.css" rel="stylesheet">
+  <link href="lib/leaflet/dist/leaflet.css" rel="stylesheet">
   <link href="assets/css/app.css" rel="stylesheet">
 </head>
 <body>
@@ -30,6 +31,10 @@
            <a href="/#/items">Items</a>
          </li>
 
+         <li>
+           <a href="/#/map">Map</a>
+         </li>
+
        </ul>
      </div>
      <!-- /.navbar-collapse -->
@@ -40,13 +45,16 @@
   <div class="container iv-container" ng-view>
   </div>
 
-  <script src="assets/lib/jquery/dist/jquery.js"></script>
-  <script src="assets/lib/lodash/dist/lodash.js"></script>
-  <script src="assets/lib/angular/angular.js"></script>
-  <script src="assets/lib/angular-resource/angular-resource.js"></script>
-  <script src="assets/lib/angular-route/angular-route.js"></script>
-  <script src="assets/lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-  <script src="assets/lib/angular-smart-table/dist/smart-table.js"></script>
+  <script src="lib/jquery/dist/jquery.js"></script>
+  <script src="lib/lodash/dist/lodash.js"></script>
+  <script src="lib/angular/angular.js"></script>
+  <script src="lib/angular-resource/angular-resource.js"></script>
+  <script src="lib/angular-route/angular-route.js"></script>
+  <script src="lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="lib/angular-smart-table/dist/smart-table.js"></script>
+  <script src="lib/angular-simple-logger/dist/angular-simple-logger.js"></script>
+  <script src="lib/leaflet/dist/leaflet.js"></script>
+  <script src="lib/ui-leaflet/dist/ui-leaflet.js"></script>
 
   <script src="app/app.js"></script>
   <script src="app/components/home/home-controller.js"></script>
@@ -56,6 +64,8 @@
   <script src="app/components/item/item-delete-controller.js"></script>
   <script src="app/components/item/item-router.js"></script>
   <script src="app/components/item/item-service.js"></script>
+  <script src="app/components/map/map-controller.js"></script>
+  <script src="app/components/map/map-router.js"></script>
 
 </body>
 </html>
