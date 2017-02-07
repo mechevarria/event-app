@@ -26,7 +26,6 @@
         "grunt-contrib-clean": "1.0.0",
         "grunt-contrib-connect": "1.0.2",
         "grunt-contrib-watch": "0.6.1",
-        "grunt-contrib-clean": "1.0.0",
         "grunt-eslint": "19.0.0",
         "grunt-express-server": "0.5.3",
         "load-grunt-tasks": "3.5.2",

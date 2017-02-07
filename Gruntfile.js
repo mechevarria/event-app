@@ -3,7 +3,7 @@
 var proxySnippet = require('grunt-connect-proxy/lib/utils').proxyRequest;
 var serveStatic = require('serve-static');
 
-module.exports = function(grunt) {
+module.exports = function (grunt) {
     require('load-grunt-tasks')(grunt);
     require('time-grunt')(grunt);
 
@@ -67,7 +67,7 @@ module.exports = function(grunt) {
                     base: [
                         'client'
                     ],
-                    middleware: function() {
+                    middleware: function () {
                         return [
                             proxySnippet,
                             serveStatic('client')
@@ -91,6 +91,12 @@ module.exports = function(grunt) {
                 options: {
                     script: './server/server.js'
                 }
+            },
+            prod: {
+                options: {
+                    script: './server/server.js',
+                    node_env: 'production'
+                }
             }
         }
     });
@@ -103,13 +109,18 @@ module.exports = function(grunt) {
     ]);
 
     grunt.registerTask('build', [
-      'clean:dist'
+        'clean:dist'
     ]);
 
     grunt.registerTask('server', [
         'eslint',
         'express:dev',
         'watch:server'
+    ]);
+
+    grunt.registerTask('production', [
+        'eslint',
+        'express:prod'
     ]);
 
 };

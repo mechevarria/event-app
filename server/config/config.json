@@ -1,0 +1,16 @@
+{
+    "development" : {
+        "database": "sequelize",
+        "username": "root",
+        "password": null,
+        "dialect": "sqlite",
+        "storage": "/tmp/sqlite.db"
+    },
+    "production": {
+        "username": "root",
+        "password": null,
+        "database": "event",
+        "host": "127.0.0.1",
+        "dialect": "mysql"
+    }
+}

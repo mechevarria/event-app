@@ -1,15 +1,17 @@
 'use strict';
 
-var db = require('../models');
+var models = require('../models');
+var express = require('express');
+var router = express.Router();
 
-exports.findAll = function(req, res) {
-    db.Item.findAll().then(function(entities) {
+router.get('/', function(req, res) {
+    models.Item.findAll().then(function(entities) {
         res.json(entities);
     });
-};
+});
 
-exports.find = function(req, res) {
-    db.Item.find({
+router.get('/:id', function(req, res) {
+    models.Item.find({
         where: {
             id: req.params.id
         }
@@ -20,17 +22,17 @@ exports.find = function(req, res) {
             res.sendStatus(404);
         }
     });
-};
+});
 
-exports.create = function(req, res) {
-    db.Item.create(req.body).then(function(entity) {
+router.post('/', function(req, res) {
+    models.Item.create(req.body).then(function(entity) {
         res.statusCode = 201;
         res.json(entity);
     });
-};
+});
 
-exports.update = function(req, res) {
-    db.Item.find({
+router.put('/:id', function(req, res) {
+    models.Item.find({
         where: {
             id: req.params.id
         }
@@ -43,10 +45,10 @@ exports.update = function(req, res) {
             res.sendStatus(404);
         }
     });
-};
+});
 
-exports.destroy = function(req, res) {
-    db.Item.find({
+router.delete('/:id', function(req, res) {
+    models.Item.find({
         where: {
             id: req.params.id
         }
@@ -59,4 +61,6 @@ exports.destroy = function(req, res) {
             res.sendStatus(404);
         }
     });
-};
+});
+
+module.exports = router;

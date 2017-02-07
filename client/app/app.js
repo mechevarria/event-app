@@ -6,7 +6,6 @@
         'ngRoute',
         'ui.bootstrap',
         'smart-table',
-        'nemLogging',
-        'ui-leaflet'
+        'toaster'
     ]);
 })();

@@ -4,12 +4,11 @@
     angular.module('item-app')
         .controller('ItemCtrl', Controller);
 
-    Controller.$inject = ['$scope', '$uibModal', 'ItemSrvc'];
+    Controller.$inject = ['$scope', '$uibModal', 'ItemSrvc', 'toaster'];
 
-    function Controller($scope, $uibModal, ItemSrvc) {
+    function Controller($scope, $uibModal, ItemSrvc, toaster) {
 
         $scope.create = function() {
-            $scope.clear();
             $scope.open();
         };
 
@@ -17,7 +16,7 @@
             $scope.item = ItemSrvc.get({
                 id: id
             });
-            $scope.open(id);
+            $scope.open($scope.item);
         };
 
         $scope.delete = function(id) {
@@ -25,6 +24,7 @@
                     id: id
                 },
                 function() {
+                    toaster.pop('success','','Item deleted successfully');
                     activate();
                 });
         };
@@ -35,11 +35,13 @@
                         id: item.id
                     }, $scope.item,
                     function() {
+                        toaster.pop('success','','Item updated successfully');
                         activate();
                     });
             } else {
                 ItemSrvc.save(item,
                     function() {
+                        toaster.pop('success','','Item created successfully');
                         activate();
                     });
             }
@@ -51,9 +53,7 @@
             $scope.item = {
                 'title': '',
                 'description': '',
-                'id': '',
-                'latitude': '',
-                'longitude': ''
+                'id': ''
             };
         };
 
